@@ -1,29 +1,27 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/03 16:54:01 by sarferna          #+#    #+#              #
-#    Updated: 2023/05/04 17:10:47 by sarferna         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = libft.a
-FLAGS = -Wall -Werror -Wextra
-SRC = ft_isalnum.o
+SRC = 	ft_bzero.c\
+		ft_isalnum.c\
+		ft_isalpha.c\
+		ft_isascii.c\
+		ft_isdigit.c\
+		ft_isprint.c\
+		ft_memset.c\
+		ft_strlen.c\
+		ft_memcpy.c
+
+OBJ = $(SRC:.c=.o)
+CFLAGS += -Wall -Werror -Wextra -I./libft.h
+
+$(NAME): $(OBJ)
+	ar -crs $(NAME) $(OBJ)
+
 all: $(NAME)
 
-$(NAME):
-	gcc $(FLAGS) -o $(NAME) $(SRC)
-
+re: fclean all
 clean:
-	rm -f *.o
+	rm -f $(OBJ)
 
-ftclean: clean
+fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
-
-
+.PHONY: add re clean fclean

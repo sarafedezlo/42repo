@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 16:57:05 by sarferna          #+#    #+#             */
-/*   Updated: 2023/05/04 17:08:14 by sarferna         ###   ########.fr       */
+/*   Created: 2023/05/03 19:59:03 by sarferna          #+#    #+#             */
+/*   Updated: 2023/05/08 18:50:21 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(char *str)
+#include "libft.h"
+
+int	ft_isalpha(int c)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] >= 32 && str[i] <= 126)
-			i++;
-		else
-			return (0);
-	}
-	return (1);
+	if ((c >= 97 && c <= 122) || (c >= 65 && c <= 90))
+		return (1);
+	return (0);
 }

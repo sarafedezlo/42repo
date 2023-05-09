@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 20:02:22 by sarferna          #+#    #+#             */
-/*   Updated: 2023/05/04 17:16:51 by sarferna         ###   ########.fr       */
+/*   Created: 2023/05/04 16:57:05 by sarferna          #+#    #+#             */
+/*   Updated: 2023/05/08 20:00:14 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(char *str)
-{
-	int	i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if ((str[i] >= 97 && str[i] <= 122)
-			|| (str[i] >= 65 && str[i] <= 90)
-			|| (str[i] >= 48 && str[i] <= 57))
-			i++;
-		else
-			return (0);
-	}
-	return (1);
+int	ft_isprint(int c)
+{
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
 }

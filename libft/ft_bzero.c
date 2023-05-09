@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 19:59:03 by sarferna          #+#    #+#             */
-/*   Updated: 2023/05/03 20:01:48 by sarferna         ###   ########.fr       */
+/*   Created: 2023/05/08 14:56:12 by sarferna          #+#    #+#             */
+/*   Updated: 2023/05/08 15:29:32 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(char *str)
-{
-	int	i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if ((str[i] >= 97 && str[i] <= 122)
-			|| (str[i] >= 65 && str[i] <= 90))
-			i++;
-		else
-			return (0);
-	}
-	return (1);
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, '\0', n);
 }
