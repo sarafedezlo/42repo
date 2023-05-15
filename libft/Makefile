@@ -13,7 +13,9 @@ SRC = 	ft_bzero.c\
 		ft_tolower.c\
 		ft_strchr.c\
 		ft_strrchr.c\
-		ft_strncmp.c
+		ft_strncmp.c\
+		ft_memchr.c\
+		ft_strlcpy.c
 
 OBJ = $(SRC:.c=.o)
 CFLAGS += -Wall -Werror -Wextra -I./libft.h
