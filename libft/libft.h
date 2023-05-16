@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 15:19:38 by sarferna          #+#    #+#             */
-/*   Updated: 2023/05/15 18:45:50 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:59:02 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dest, const char *src, size_t dstsize);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 #endif
