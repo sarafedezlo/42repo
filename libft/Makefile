@@ -19,7 +19,13 @@ SRC = 	ft_bzero.c\
 		ft_strlcat.c\
 		ft_strnstr.c\
 		ft_memcmp.c\
-		ft_atoi.c
+		ft_atoi.c\
+		ft_calloc.c\
+		ft_strdup.c\
+		ft_substr.c\
+		ft_strjoin.c\
+		ft_strtrim.c\
+		ft_itoa.c
 
 OBJ = $(SRC:.c=.o)
 CC = gcc

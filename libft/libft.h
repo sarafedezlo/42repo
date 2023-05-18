@@ -6,15 +6,14 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 15:19:38 by sarferna          #+#    #+#             */
-/*   Updated: 2023/05/17 14:22:54 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:31:11 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stddef.h>
-# include <ctype.h>
+# include <stdlib.h>
 
 int		ft_isalnum(int c);
 size_t	ft_strlen(const char *str);
@@ -37,5 +36,11 @@ size_t	ft_strlcat(char *dest, const char *src, size_t dstsize);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_atoi(const char *str);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_strdup(const char *s1);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_itoa(int n);
 
 #endif
