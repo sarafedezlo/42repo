@@ -18,9 +18,11 @@ SRC = 	ft_bzero.c\
 		ft_strlcpy.c\
 		ft_strlcat.c\
 		ft_strnstr.c\
-		ft_memcmp.c
+		ft_memcmp.c\
+		ft_atoi.c
 
 OBJ = $(SRC:.c=.o)
+CC = gcc
 CFLAGS += -Wall -Werror -Wextra -I./libft.h
 
 $(NAME): $(OBJ)
