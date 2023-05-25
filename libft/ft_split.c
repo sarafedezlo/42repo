@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:10:23 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/25 15:35:23 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/25 15:59:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ char    **ft_split(char const *s, char c)
             while (bi-- >= 0)
                 free (b[bi]);
             free (b);
-            free (sr);
             return (NULL);
         }
         bi++;
