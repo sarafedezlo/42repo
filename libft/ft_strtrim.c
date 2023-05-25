@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:37:18 by sarferna          #+#    #+#             */
-/*   Updated: 2023/05/25 10:02:29 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/25 10:55:55 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	c = 0;
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	while (s1[i] != '\0')
 	{
 		if (ft_strchr(set, ((int)s1) + i) == 0)
@@ -29,7 +31,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	s = ft_calloc(c + 1, sizeof(char));
 	i = 0;
-	while (!s)
+	while (*s != '\0')
 	{
 		if (ft_strchr(set, ((int)s1) + i) == 0)
 		{
