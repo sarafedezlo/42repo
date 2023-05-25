@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:10:23 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/25 15:59:43 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/25 17:11:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void    char_counter_gnrt(char const *sr, char c, char *b, int bi)
 //cada vez que abanzo en b en el nivel alto hago esto "len" veces.
 //copio a cada string la parte correspondiente de sr y devuelvo la direccion 
 // de sr para poder retomarlo en "i" en la siguiente iteracion
-char    *char_cpy_direc(char const *sr, char c, char *b, int bi)
+char    *char_cpy_direc(char const *sr, char c, char **b, int bi)
 {
     int i;
     int t;
@@ -86,7 +86,7 @@ char    **ft_split(char const *s, char c)
     if (!s)
         return (NULL);
     sr = ft_strdup(s);
-    b = ft_calloc(word_counter(s, c), sizeof(char));
+    b = ft_calloc(word_counter(s, c) + 1, sizeof(char));
     while (bi <= word_counter(s, c))
     {
         char_counter_gnrt(sr, c, b, bi);
