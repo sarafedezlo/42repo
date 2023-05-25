@@ -6,9 +6,11 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 11:08:14 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/25 11:45:05 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/25 11:59:11 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void    ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
