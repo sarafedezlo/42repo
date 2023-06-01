@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 12:54:23 by sarferna          #+#    #+#             */
-/*   Updated: 2023/05/26 12:54:27 by sarferna         ###   ########.fr       */
+/*   Created: 2023/05/26 12:47:22 by sarferna          #+#    #+#             */
+/*   Updated: 2023/05/26 14:30:26 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
+	char	array_n[11];
+	int		i;
 
 	i = 0;
-	if (dstsize != 0)
+	if (n == 0)
+		write (fd, "0", 1);
+	if (n == -2147483648)
+		write (fd, "-2147483648", 11);
+	if (n < 0 && n > -2147483648)
 	{
-		while (i < (dstsize - 1) && (ft_strlen(src) - i) > 0)
-		{
-			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-			i++;
-		}
-		((unsigned char *)dst)[i] = '\0';
+		n = n * -1;
+		write (fd, "-", 1);
 	}
-	return ((size_t)ft_strlen(src));
+	while (n > 0 && n <= 2147483647)
+	{
+		array_n[i] = n % 10 + '0';
+		i++;
+		n = n / 10;
+	}
+	while (i-- > 0)
+		write (fd, &array_n[i], 1);
 }
