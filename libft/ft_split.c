@@ -6,99 +6,61 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:53:26 by sarferna          #+#    #+#             */
-/*   Updated: 2023/05/26 13:42:47 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:43:50 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//cuento las palabras que tiene la string inicial.
-int	word_counter(char const *s, char c)
+size_t	count_word(char const *s, char c)
 {
-	int	i;
-	int	counter;
+	size_t	i;
+	size_t	r;
 
 	i = 0;
-	counter = 0;
+	r = 0;
+	if (s[i] == c)
+		i++;
 	while (s[i])
 	{
-		if (s[i] != c && s[i + 1] == c)
-			counter++;
+		if (s[i] == c && s[i + 1] != c)
+			r++;
 		i++;
 	}
-	return (counter);
-}
-
-// cuento los caracteres de una palabra, desde la posicion de sr actualizada
-// generando un calloc con ese volumen, en su posicion.
-void	char_counter_gnrt(char const *sr, char c, char **b, int bi)
-{
-	int	i;
-	int	t;
-
-	i = 0;
-	t = 0;
-	if (sr[i] == c)
-		i++;
-	while (sr[i])
-	{
-		if (sr[i] != c)
-			t++;
-		if (sr[i] != c && sr[i + 1] == c)
-			b[bi] = (char *)ft_calloc(t + 1, sizeof(char));
-		i++;
-	}
-}
-
-//cada vez que abanzo en b en el nivel alto hago esto "len" veces.
-//copio a cada string la parte correspondiente de sr y devuelvo la direccion 
-// de sr para poder retomarlo en "i" en la siguiente iteracion
-char	*char_cpy_direc(char *sr, char c, char **b, int bi)
-{
-	int	i;
-	int	t;
-
-	i = 0;
-	t = 0;
-	if (sr[i] == c)
-		i++;
-	while (sr[i])
-	{
-		if (sr[i] != c)
-		{
-			b[bi][t] = sr[i];
-			t++;
-		}
-		if (sr[i] != c && sr[i + 1] == c)
-			return (&sr[i]);
-		i++;
-	}
-	return (0);
+	return (r);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**b;
-	char	*sr;
-	int		bi;
+	char	**a;
+	int		i;
+	int		j;
+	int		pi;
 
-	bi = 0;
+	i = 0;
 	if (!s)
 		return (NULL);
-	sr = ft_strdup(s);
-	b = ft_calloc(word_counter(s, c) + 1, sizeof(char));
-	while (bi <= word_counter(s, c))
+	*a = malloc(count_word(s, c) + 1);
+	if (!*a)
+		return (NULL);
+	while (s[i])
 	{
-		char_counter_gnrt(sr, c, b, bi);
-		sr = char_cpy_direc(sr, c, b, bi);
-		if (!b[bi])
+		if (((char *)s)[i] != c && s[i - 1] == c || i = 0 && s[i] != c)
+			pi = i;
+		if ((s[i] == c && s[i + 1] != c) && pi != 0)
 		{
-			while (bi-- >= 0)
-				free (b[bi]);
-			free (b);
-			return (NULL);
+			a[j] = ft_substr(*s, pi - 1, i - pi);
+			if (!a[j])
+			{
+				while (j > 0)
+					free (a[--j]);
+				free (a);
+				return (NULL);
+			}
+			j++;
+			pi = 0;
 		}
-		bi++;
+		i++
 	}
-	return (b);
+	return (a);
 }
