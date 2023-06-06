@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:53:26 by sarferna          #+#    #+#             */
-/*   Updated: 2023/06/02 13:47:27 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:17:59 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	while (s[i])
 	{
+		while (s[i] == c)
+			i++;
 		if ((i == 0 && s[i] != c) || (s[i] != c && s[i - 1] == c))
 			pi = i;
-		if ((s[i] == c && s[i + 1] != c) && pi != 0)
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0') && pi != 0)
 		{
 			a[j] = ft_substr(s, pi, i - pi);
 			if (!a[j])
