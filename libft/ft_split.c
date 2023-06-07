@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:53:26 by sarferna          #+#    #+#             */
-/*   Updated: 2023/06/06 16:17:59 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:05:19 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,16 @@ size_t	count_word(char const *s, char c)
 	size_t	i;
 	size_t	r;
 
-	i = 0;
+	i = 1;
 	r = 0;
-	while (s[i] == c)
-		i++;
+
+	if (s[0] == '\0')
+		return (0);
+	if (s[0] != c)
+		r++;
 	while (s[i])
 	{
-		if (s[i] == c && s[i + 1] != c)
+		if (s[i] != c && s[i - 1] == c)
 			r++;
 		i++;
 	}
@@ -32,9 +35,16 @@ size_t	count_word(char const *s, char c)
 }
 
 
-char	**ft_split(char const *s, char c)
+char	**free_array(char **a, int j)
 {
-	char	**a;
+	while (j > 0)
+		free(a[--j]);
+	free(a);
+	return (NULL);
+}
+
+char	**allocate_string(char **a, char *s, char c)
+{
 	int		i;
 	int		j;
 	int		pi;
@@ -42,34 +52,34 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	j = 0;
 	pi = 0;
-	if (!s)
-		return (NULL);
-	a = (char **)malloc(count_word(s, c) + 1 * sizeof(char *));
-	if (!a)
-		return (NULL);
 	while (s[i])
 	{
-		while (s[i] == c)
-			i++;
-		if ((i == 0 && s[i] != c) || (s[i] != c && s[i - 1] == c))
-			pi = i;
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0') && pi != 0)
+		if (s[i] != c)
+			pi++;
+		i++;
+		if ((s[i] == c || s[i] == '\0') && pi != 0)
 		{
-			a[j] = ft_substr(s, pi, i - pi);
+			a[j] = ft_substr(s, i - pi, pi);
 			if (!a[j])
-			{
-				while (j > 0)
-					free(a[--j]);
-				free(a);
-				return (NULL);
-			}
+				return (free_array(a, j));
 			j++;
 			pi = 0;
 		}
-		i++;
 	}
 	a[j] = NULL;
 	return (a);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**a;
+
+	if (!s)
+		return (NULL);
+	a = (char **)malloc((count_word(s, c) + 1) * sizeof(char *));
+	if (!a)
+		return (NULL);
+	return (allocate_string(a, (char *)s, c));
 }
 
 // int	main(void)
