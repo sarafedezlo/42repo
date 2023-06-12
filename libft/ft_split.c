@@ -6,12 +6,11 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:53:26 by sarferna          #+#    #+#             */
-/*   Updated: 2023/06/07 17:05:19 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/06/12 11:52:52 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 size_t	count_word(char const *s, char c)
 {
@@ -20,7 +19,6 @@ size_t	count_word(char const *s, char c)
 
 	i = 1;
 	r = 0;
-
 	if (s[0] == '\0')
 		return (0);
 	if (s[0] != c)
@@ -33,7 +31,6 @@ size_t	count_word(char const *s, char c)
 	}
 	return (r);
 }
-
 
 char	**free_array(char **a, int j)
 {
@@ -81,19 +78,3 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (allocate_string(a, (char *)s, c));
 }
-
-// int	main(void)
-// {
-//  	char *s = "    hola      que   tal    wena    teta     ";
-
-// 	char	**y;
-// 	int	i;
-
-// 	i = 0;
-// 	y = ft_split(s, ' ');
-// 	while (y[i])
-// 	{
-// 		printf("%s\n", y[i]);
-// 		i++;
-// 	}
-// }

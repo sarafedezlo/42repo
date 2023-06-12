@@ -1,4 +1,5 @@
-NAME = libft.a
+NAME =	libft.a
+HEADER =	libft.h
 SRC = 	ft_bzero.c\
 		ft_isalnum.c\
 		ft_isalpha.c\
@@ -34,20 +35,40 @@ SRC = 	ft_bzero.c\
 		ft_putendl_fd.c\
 		ft_putnbr_fd.c
 
-OBJ = $(SRC:.c=.o)
-CC = gcc
-CFLAGS += -Wall -Werror -Wextra -I./libft.h
+BONUS = ft_lstnew_bonus.c\
+		ft_lstadd_front_bonus.c\
+		ft_lstsize_bonus.c\
+		ft_lstlast_bonus.c\
+		ft_lstadd_back_bonus.c\
+		ft_lstdelone_bonus.c\
+		ft_lstclear_bonus.c
 
-$(NAME): $(OBJ)
-	ar -crs $(NAME) $(OBJ)
+
+OBJ = $(SRC:.c=.o)
+OBJ_B = $(BONUS:.c=.o)
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-re: fclean all
+c.o:
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+
+$(NAME):: $(OBJ) $(HEADER)
+	ar -crs $(NAME) $(OBJ)
+
+bonus: .bonus
+
+.bonus: $(NAME) $(OBJ_B) $(HEADER)
+	ar -crs $(NAME) $(OBJ_B)
+	touch .bonus
+
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_B)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) .bonus
 
-.PHONY: add re clean fclean
+re: fclean all
+
+.PHONY: all clean fclean re .c.o bonus
