@@ -6,11 +6,11 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:45:51 by sarferna          #+#    #+#             */
-/*   Updated: 2023/06/16 11:47:57 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/06/20 13:59:51 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 int	ft_printf(char const *format, ...)
 {

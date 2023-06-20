@@ -6,13 +6,13 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:30:15 by sarferna          #+#    #+#             */
-/*   Updated: 2023/06/12 11:44:46 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/06/20 14:00:40 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_num_sign_null(int r)
+static int	count_num_sign_null(int r)
 {
 	int	i;
 

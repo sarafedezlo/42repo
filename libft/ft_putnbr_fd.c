@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:47:22 by sarferna          #+#    #+#             */
-/*   Updated: 2023/05/26 14:30:26 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/06/20 14:13:02 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_putnbr_fd(int n, int fd)
 		i++;
 		n = n / 10;
 	}
+	array_n[i] = '\0';
 	while (i-- > 0)
 		write (fd, &array_n[i], 1);
 }
