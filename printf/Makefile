@@ -1,6 +1,9 @@
 NAME =	libftprintf.a
 HEADER =	libftprintf.h
-SRC = 	ft_printf.c
+SRC = 	ft_printf.c\
+		ft_putchar.c\
+		ft_putstr.c\
+		ft_putnbr_base.c
 
 OBJ = $(SRC:.c=.o)
 CC = cc

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 13:46:12 by sarferna          #+#    #+#             */
-/*   Updated: 2023/06/20 14:38:40 by sarferna         ###   ########.fr       */
+/*   Created: 2023/05/26 12:51:04 by sarferna          #+#    #+#             */
+/*   Updated: 2023/06/21 12:51:49 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_putstr(char *s)
 {
-	if (*lst)
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
 	{
-		new->next = *lst;
-		*lst = new;
+		write(1, &s[i], 1);
+		i++;
 	}
-	else
-	*lst = new;
 }
