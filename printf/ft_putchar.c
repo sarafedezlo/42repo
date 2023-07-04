@@ -6,13 +6,13 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:44:50 by sarferna          #+#    #+#             */
-/*   Updated: 2023/06/21 12:50:48 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/07/04 11:47:58 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(char c)
 {
-	write (1, &c, 1);
+	return ((int)write (1, &c, 1));
 }
