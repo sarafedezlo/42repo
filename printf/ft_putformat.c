@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:07:25 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/06 14:22:17 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:27:42 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,8 @@ int	number_type(char const format_char, va_list args)
 		n = va_arg(args, unsigned long long);
 		return (ft_putnbr_base(n, "0123456789ABCDEF"));
 	}
-	else
-	{
-		n = va_arg(args, unsigned long long);
-		return (ft_putnbr_base(n, "0123456789abcdef"));
-	}
+	n = va_arg(args, unsigned long long);
+	return (ft_putnbr_base(n, "0123456789abcdef"));
 }
 
 int	format_types(char const *format, int i, va_list args)
@@ -78,6 +75,5 @@ int	ft_putformat(va_list args, char const *format)
 			c = c + ft_putchar(format[i]);
 		i++;
 	}
-	va_end(args);
 	return (c);
 }
