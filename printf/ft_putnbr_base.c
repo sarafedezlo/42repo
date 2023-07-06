@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 12:56:44 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/03 13:26:17 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/07/06 13:53:41 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	ft_strlen(char *base)
 int	ft_putnbr_base(unsigned long long nbr, char *base)
 {
 	unsigned long long	n;
-	int	i;
+	int					i;
 
 	n = nbr;
 	i = 0;
@@ -74,4 +74,3 @@ int	ft_putnbr_base(unsigned long long nbr, char *base)
 	}
 	return (i);
 }
-7
