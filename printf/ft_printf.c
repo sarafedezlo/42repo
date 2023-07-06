@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_prueba.c                                      :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 11:50:04 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/06 16:43:56 by sarferna         ###   ########.fr       */
+/*   Created: 2023/06/16 10:45:51 by sarferna          #+#    #+#             */
+/*   Updated: 2023/07/06 16:46:05 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libftprintf.h"
 
-/*int main()
+int	ft_printf(char const *format, ...)
 {
-	char *str;
-	char *pstr;
-	str = "";
-	pstr[20] = &str;
-	
-	printf("%p\n", str);
-	printf("0x%s\n", pstr);
-	return (0);
-}*/
+	va_list	args;
+	int		i;
 
-int	main()
-{
-	char	*str;
-	char	**pstr;
-
-	str = "Hello, World!";
-	pstr = &str;
-
-	printf("%p%%%\n", (void *)str);
-	printf("%s\n", *pstr);
-
-	return (0);
+	va_start(args, format);
+	i = ft_putformat(args, format);
+	va_end(args);
+	return (i);
 }
