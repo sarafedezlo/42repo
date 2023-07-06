@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf_bueno.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 14:48:18 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/03 13:09:06 by sarferna         ###   ########.fr       */
+/*   Created: 2023/06/16 10:45:51 by sarferna          #+#    #+#             */
+/*   Updated: 2023/07/06 11:20:01 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
+#include <stdio.h>
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+int	ft_printf(char const *format, ...)
+{
+	va_list	args;
+	int		i;
 
-int		ft_printf(char const *format, ...);
-int 	ft_putchar(char c);
-int 	ft_putstr(char *s);
-int 	ft_putnbr_base(unsigned long long nbr, char *base);
-
-#endif
+	va_start(args, format);
+	i = ft_putformat(args, format);
+	va_end(args);
+	return (i);
+}

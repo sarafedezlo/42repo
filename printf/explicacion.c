@@ -28,6 +28,7 @@ int	ft_printf(char const *format, ...)
 	printf("%d", i);
 	return (0);
 }
+
 /*format: hola %s, com estas;
 while (format)
 if format[i] == %
