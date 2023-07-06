@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:45:51 by sarferna          #+#    #+#             */
-/*   Updated: 2023/06/21 16:17:09 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:35:47 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_printf(char const *format, ...)
 
 	va_start(args, format);
 	s = va_arg(args, char*);
-	i = printf("%s%d%s%b\n", s, j, s);
+	i = printf("%s%d%s\n", s, j, s);
 	puts(va_arg(args, char*));
 	puts(va_arg(args, char*));
 	puts(s);

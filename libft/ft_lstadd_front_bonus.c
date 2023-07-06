@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 13:46:12 by sarferna          #+#    #+#             */
-/*   Updated: 2023/06/20 14:38:40 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/07/06 10:44:19 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 		*lst = new;
 	}
 	else
-	*lst = new;
+		*lst = new;
 }
