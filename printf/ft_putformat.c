@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:07:25 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/06 14:27:42 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:28:51 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int	ft_putformat(va_list args, char const *format)
 	while (format[i])
 	{
 		if (format[i] == '%')
-			c = c + format_types(format, i, args);
+			c += format_types(format, i, args);
 		else
-			c = c + ft_putchar(format[i]);
+			c += ft_putchar(format[i]);
 		i++;
 	}
 	return (c);
