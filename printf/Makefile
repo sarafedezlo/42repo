@@ -1,8 +1,7 @@
 NAME =	libftprintf.a
 HEADER =	libftprintf.h
 SRC = 	ft_printf.c\
-		ft_putchar.c\
-		ft_putstr.c\
+		ft_putstr_char.c\
 		ft_putnbr_base.c\
 		ft_putformat.c
 

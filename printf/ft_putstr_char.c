@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_bueno.c                                  :+:      :+:    :+:   */
+/*   ft_putstr_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 10:45:51 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/06 11:20:01 by sarferna         ###   ########.fr       */
+/*   Created: 2023/05/26 12:51:04 by sarferna          #+#    #+#             */
+/*   Updated: 2023/07/10 18:41:16 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
-int	ft_printf(char const *format, ...)
+int	ft_putchar(char c)
 {
-	va_list	args;
-	int		i;
+	return ((int)write (1, &c, 1));
+}
 
-	va_start(args, format);
-	i = ft_putformat(args, format);
-	va_end(args);
+int	ft_putstr(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (write(1, &s[i], 1) == -1)
+			return (-1);
+		i++;
+	}
 	return (i);
 }
