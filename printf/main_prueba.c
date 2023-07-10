@@ -6,10 +6,11 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:50:04 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/06 16:43:56 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/07/10 15:00:03 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libftprintf.h"
 #include <stdio.h>
 
 /*int main()
@@ -27,13 +28,10 @@
 int	main()
 {
 	char	*str;
-	char	**pstr;
 
 	str = "Hello, World!";
-	pstr = &str;
-
-	printf("%p%%%\n", (void *)str);
-	printf("%s\n", *pstr);
-
+	printf("%s\n", str);
+	ft_printf("%s\n", str);
+	printf("%i\n", ft_printf("%s\n", str));
 	return (0);
 }
