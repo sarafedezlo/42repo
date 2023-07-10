@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:07:25 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/10 18:21:07 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:37:53 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ static int	format_types(char const *format, int i, va_list args)
 	else if (format[i + 1] == 'p')
 		return (ft_putnbr_base((unsigned long long)va_arg(args, void *),
 				"0123456789ABCDEF", 0));
-	else if (format[i + 1] == '%')
-		return (ft_putchar(format[i + 1]));
 	else
 		return (ft_putchar(format[i + 1]));
 }
@@ -68,8 +66,15 @@ int	ft_putformat(va_list args, char const *format)
 	{
 		if (format[i] == '%')
 		{
-			c += format_types(format, i, args);
-			i++;
+			if (format[i + 1] == '%' || format[i + 1] == 'p'
+				|| format[i + 1] == 'u' || format[i + 1] == 'X'
+				|| format[i + 1] == 'x' || format[i + 1] == 'd'
+				|| format[i + 1] == 'i' || format[i + 1] == 's'
+				|| format[i + 1] == 'c')
+			{
+				c += format_types(format, i, args);
+				i++;
+			}
 		}
 		else
 			c += ft_putchar(format[i]);

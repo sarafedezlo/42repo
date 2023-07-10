@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:45:51 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/10 18:16:19 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:37:27 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,18 @@ int	ft_printf(char const *format, ...)
 	return (i);
 }
 
-int	main()
-{
-	char	*str;
-	int		l;
+// int	main()
+// {
+// 	char	*str;
+// 	int		l;
 
-	str = "Hello, World!";
-	l = -234567;
-	printf("---%i\n", printf("---%s\n", str));
-	printf("+++%i\n", ft_printf("+++%s\n", str));
-	printf("---%i\n", printf("---%s---%d\n", str, l));
-	printf("+++%i\n", ft_printf("+++%s+++%d\n", str, l));
-	return (0);
-}
+// 	str = "Hello, World!";
+// 	l = -234567;
+// 	printf("---%i\n", printf("---%s\n", str));
+// 	printf("+++%i\n", ft_printf("+++%s\n", str));
+// 	printf("---%i\n", printf("---%s---%d\n", str, l));
+// 	printf("+++%i\n", ft_printf("+++%s+++%d\n", str, l));
+// 	printf("---%i\n", printf("---%s---%d%&&&\n", str, l));
+// 	printf("+++%i\n", ft_printf("+++%s+++%d%&&&\n", str, l));
+// 	return (0);
+// }
