@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_char.c                                   :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 12:51:04 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/19 16:59:26 by sarferna         ###   ########.fr       */
+/*   Created: 2023/07/19 13:16:30 by sarferna          #+#    #+#             */
+/*   Updated: 2023/07/20 17:28:06 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_putchar(char c)
+int	ft_printf(char const *format, ...)
 {
-	return ((int)write (1, &c, 1));
-}
+	va_list	args;
+	int		c;
 
-int	ft_putstr(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (ft_putstr("(null)"));
-	while (s[i])
-	{
-		if (write(1, &s[i], 1) == -1)
-			return (-1);
-		i++;
-	}
-	return (i);
+	va_start(args, format);
+	c = ft_writeformat(args, format);
+	va_end(args);
+	return (c);
 }

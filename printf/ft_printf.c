@@ -6,12 +6,12 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:45:51 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/10 18:39:55 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/07/19 16:59:44 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-//#include <stdio.h>
+// #include <stdio.h>
 
 int	ft_printf(char const *format, ...)
 {
@@ -30,12 +30,12 @@ int	ft_printf(char const *format, ...)
 // 	int		l;
 
 // 	str = "Hello, World!";
-// 	l = -234567;
+// 	l = -2345679;
 // 	printf("---%i\n", printf("---%s\n", str));
 // 	printf("+++%i\n", ft_printf("+++%s\n", str));
+// 	printf("---%i\n", printf("---%s---%d\n", NULL, l));
+// 	printf("+++%i\n", ft_printf("+++%s+++%d\n", NULL, l));
 // 	printf("---%i\n", printf("---%s---%d\n", str, l));
 // 	printf("+++%i\n", ft_printf("+++%s+++%d\n", str, l));
-// 	printf("---%i\n", printf("---%s---%d%&&&\n", str, l));
-// 	printf("+++%i\n", ft_printf("+++%s+++%d%&&&\n", str, l));
 // 	return (0);
 // }

@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:07:25 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/10 18:37:53 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:40:02 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ static int	number_type(char const format_char, va_list args)
 	int	c;
 
 	c = 0;
-	if (format_char == 'i' || format_char == 'd' || format_char == 'u')
+	if (format_char == 'i' || format_char == 'd')
 	{
 		n = va_arg(args, int);
 		if (n < 0)
 		{
-			if (format_char != 'u')
-				c = ft_putchar('-');
+			if (n == -2147483648)
+				return (ft_putstr("-2147483648"));
+			c = ft_putchar('-');
 			n *= -1;
 		}
-		return (ft_putnbr_base((unsigned long long) n, "0123456789", c));
+		return (ft_putnbr_base(n, "0123456789") + c);
 	}
+	if (format_char == 'u')
+		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789"));
 	else if (format_char == 'X')
-	{
-		n = va_arg(args, unsigned long long);
-		return (ft_putnbr_base(n, "0123456789ABCDEF", 0));
-	}
-	n = va_arg(args, unsigned long long);
-	return (ft_putnbr_base(n, "0123456789abcdef", 0));
+		return (ft_putnbr_base(va_arg(args, long int),
+				"0123456789ABCDEF"));
+	return (ft_putnbr_base(va_arg(args, long int), "0123456789abcdef"));
 }
 
 static int	format_types(char const *format, int i, va_list args)
@@ -49,10 +49,13 @@ static int	format_types(char const *format, int i, va_list args)
 		|| format[i + 1] == 'u')
 		return (number_type(format[i + 1], args));
 	else if (format[i + 1] == 'p')
-		return (ft_putnbr_base((unsigned long long)va_arg(args, void *),
-				"0123456789ABCDEF", 0));
+	{
+		ft_putstr("0x");
+		return (ft_putnbr_base_d(va_arg(args, unsigned long),
+				"0123456789abcdef"));
+	}
 	else
-		return (ft_putchar(format[i + 1]));
+		return (ft_putchar('%'));
 }
 
 int	ft_putformat(va_list args, char const *format)
@@ -75,6 +78,8 @@ int	ft_putformat(va_list args, char const *format)
 				c += format_types(format, i, args);
 				i++;
 			}
+			else
+				c = -1;
 		}
 		else
 			c += ft_putchar(format[i]);

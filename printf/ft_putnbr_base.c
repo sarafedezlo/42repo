@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 12:56:44 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/10 18:20:52 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:42:44 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,34 @@ static int	count_num(unsigned long long nbr, char *base)
 	return (i);
 }
 
-int	ft_putnbr_base(unsigned long long nbr, char *base, int c)
+int	ft_putnbr_base(unsigned long nbr, char *base)
 {
-	unsigned long long	n;
-	unsigned long long	s;
+	long int	n;
+	long int	s;
 
 	n = nbr;
 	s = nbr;
+	if (n == 0)
+		return (ft_putchar('0'));
 	if (n / ft_strlen(base) > 0)
-		ft_putnbr_base((n / ft_strlen(base)), base, c);
-	if (write(1, &base[n % ft_strlen(base)], 1) == -1)
-		return (-1);
-	return (c + count_num(s, base));
+		ft_putnbr_base((n / ft_strlen(base)), base);
+	if (write(1, &base[n % ft_strlen(base)], 1) != -1)
+		return (count_num(s, base));
+	return (-1);
+}
+
+int	ft_putnbr_base_d(unsigned long nbr, char *base)
+{
+	unsigned long	n;
+	unsigned long	s;
+
+	if (!nbr)
+		return (ft_putstr("0") + 2);
+	n = nbr;
+	s = nbr;
+	if (n / ft_strlen(base) > 0)
+		ft_putnbr_base_d((n / ft_strlen(base)), base);
+	if (write(1, &base[n % ft_strlen(base)], 1) != -1)
+		return (count_num(s, base) + 2);
+	return (-1);
 }
