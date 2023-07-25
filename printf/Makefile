@@ -6,11 +6,14 @@ SRC = 	ft_printf.c\
 		ft_putformat.c
 
 OBJ = $(SRC:.c=.o)
+DEP	= $(addsuffix .d, $(basename $(OBJ)))
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 $(NAME):: $(OBJ) $(HEADER)
 	ar -crs $(NAME) $(OBJ)
+
+-include $(DEP)
 
 all: $(NAME)
 

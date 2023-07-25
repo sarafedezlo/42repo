@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:07:25 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/20 15:40:02 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:58:23 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	number_type(char const format_char, va_list args)
 			c = ft_putchar('-');
 			n *= -1;
 		}
+		if (c == -1)
+			return (c);
 		return (ft_putnbr_base(n, "0123456789") + c);
 	}
 	if (format_char == 'u')
