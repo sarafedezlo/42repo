@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:22 by sarferna          #+#    #+#             */
-/*   Updated: 2023/07/26 19:21:49 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/02 19:41:12 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 char	*get_next_line(int fd)
 {
-	size_t	num_buf;
-	char	buf[42];
+	static char	*rest_buf;
+	char		*line;
 
-	num_buf = 42;
-	read(fd, buf, num_buf);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
+	rest_buf = ft_read(fd, rest_buf);
+	line = ft_define_line(rest_buf);
+	rest_buf = ft_rest_read(rest_buf);
+	return (line);
 }
 
 int	main(void)
