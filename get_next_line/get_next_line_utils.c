@@ -38,4 +38,3 @@ char	*ft_strjoin(static char *rest_buf, char *buf)
 	free (buf);
 	return (sr);
 }
-
