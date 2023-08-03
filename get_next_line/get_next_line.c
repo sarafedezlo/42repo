@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:22 by sarferna          #+#    #+#             */
-/*   Updated: 2023/08/03 16:47:06 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/03 16:48:57 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,11 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int	fd;
 
-	fd = open("",
-			O_RDONLY);
+	fd = open("",O_RDONLY);
 	if (fd == -1)
 	{
 		ft_putstr("Error \n");
@@ -102,4 +101,5 @@ int	main(void)
 	get_next_line(fd);
 	close(fd);
 	return (0);
-}
+}*/
+

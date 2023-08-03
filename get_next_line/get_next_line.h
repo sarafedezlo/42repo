@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:50 by sarferna          #+#    #+#             */
-/*   Updated: 2023/08/03 16:37:03 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/03 16:49:27 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
+#endif
 
 # include <stdlib.h>
 # include <unistd.h>
