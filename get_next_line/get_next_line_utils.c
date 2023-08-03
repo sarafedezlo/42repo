@@ -6,13 +6,23 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:27 by sarferna          #+#    #+#             */
-/*   Updated: 2023/08/02 19:49:36 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/03 16:47:14 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(static char *rest_buf, char *buf)
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+char	*ft_strjoin(char *rest_buf, char *buf)
 {
 	char	*sr;
 	size_t	i;
@@ -23,7 +33,7 @@ char	*ft_strjoin(static char *rest_buf, char *buf)
 	if (!rest_buf)
 	{
 		rest_buf = malloc(1 * sizeof(char));
-		if (!s1)
+		if (!rest_buf)
 			return (NULL);
 		rest_buf[0] = '\0';
 	}
@@ -35,6 +45,5 @@ char	*ft_strjoin(static char *rest_buf, char *buf)
 	while (buf[c])
 		sr[i + c] = buf[c++];
 	sr[i + c] = '\0';
-	free (buf);
 	return (sr);
 }
