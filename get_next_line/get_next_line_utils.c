@@ -6,11 +6,27 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:27 by sarferna          #+#    #+#             */
-/*   Updated: 2023/08/03 16:47:14 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:20:49 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_strchr(char *s, int c)
+{
+	char	*r;
+
+	r = (char *)s;
+	while (*r != '\0')
+	{
+		if (*r == (unsigned char)c)
+			return (r);
+		r++;
+	}
+	if ((unsigned char)c == '\0')
+		return (r);
+	return (0);
+}
 
 size_t	ft_strlen(const char *str)
 {
@@ -28,22 +44,22 @@ char	*ft_strjoin(char *rest_buf, char *buf)
 	size_t	i;
 	size_t	c;
 
-	i = 0;
-	c = 0;
+	i = -1;
+	c = -1;
 	if (!rest_buf)
 	{
 		rest_buf = malloc(1 * sizeof(char));
 		if (!rest_buf)
-			return (NULL);
+			return (ft_free(&rest_buf));
 		rest_buf[0] = '\0';
 	}
 	sr = malloc((ft_strlen(rest_buf) + ft_strlen(buf) + 1) * sizeof(char));
 	if (!sr)
-		return (NULL);
-	while (rest_buf[i])
-		sr[i] = rest_buf[i++];
-	while (buf[c])
-		sr[i + c] = buf[c++];
-	sr[i + c] = '\0';
+		return (ft_free(&sr));
+	while (rest_buf[++i])
+		sr[i] = rest_buf[i];
+	while (buf[++c])
+		sr[i + c] = buf[c];
+	sr[ft_strlen(rest_buf) + ft_strlen(buf)] = '\0';
 	return (sr);
 }

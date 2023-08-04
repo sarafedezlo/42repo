@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:50 by sarferna          #+#    #+#             */
-/*   Updated: 2023/08/03 16:49:27 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:15:17 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
+char	*ft_free(char **buf);
 char	*ft_read(int fd, char *rest_buf);
 char	*ft_define_line(char *rest_buf);
 char	*ft_rest_read(char *rest_buf);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char *rest_buf, char *buf);
+char	*ft_strchr(char *s, int c);
 
 #endif
