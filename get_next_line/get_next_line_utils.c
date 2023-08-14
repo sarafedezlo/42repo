@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:27 by sarferna          #+#    #+#             */
-/*   Updated: 2023/08/04 18:20:49 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:43:06 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 char	*ft_strchr(char *s, int c)
 {
-	char	*r;
+	int	i;
 
-	r = (char *)s;
-	while (*r != '\0')
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i] != '\0')
 	{
-		if (*r == (unsigned char)c)
-			return (r);
-		r++;
+		if (s[i] == (unsigned char)c)
+			return (&s[i]);
+		i++;
 	}
-	if ((unsigned char)c == '\0')
-		return (r);
 	return (0);
 }
 
@@ -46,20 +46,15 @@ char	*ft_strjoin(char *rest_buf, char *buf)
 
 	i = -1;
 	c = -1;
-	if (!rest_buf)
-	{
-		rest_buf = malloc(1 * sizeof(char));
-		if (!rest_buf)
-			return (ft_free(&rest_buf));
-		rest_buf[0] = '\0';
-	}
-	sr = malloc((ft_strlen(rest_buf) + ft_strlen(buf) + 1) * sizeof(char));
+	sr = (char *)malloc((ft_strlen(rest_buf) + ft_strlen(buf) + 1) \
+		* sizeof(char));
 	if (!sr)
-		return (ft_free(&sr));
+		return (NULL);
 	while (rest_buf[++i])
 		sr[i] = rest_buf[i];
 	while (buf[++c])
 		sr[i + c] = buf[c];
 	sr[ft_strlen(rest_buf) + ft_strlen(buf)] = '\0';
+	free (rest_buf);
 	return (sr);
 }

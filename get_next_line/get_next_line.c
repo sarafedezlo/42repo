@@ -6,11 +6,13 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:22 by sarferna          #+#    #+#             */
-/*   Updated: 2023/08/04 18:24:45 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:43:05 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
+#include <fcntl.h>
 
 char	*ft_free(char **buf)
 {
@@ -29,12 +31,10 @@ char	*ft_rest_read(char *rest_buf)
 	j = 0;
 	while (rest_buf[i] && rest_buf[i] != '\n')
 		i++;
-	if (!rest_buf[i])
-		return (ft_free(&rest_buf));
 	new_rest = (char *)malloc((ft_strlen(rest_buf) - i + 1) * sizeof(char));
 	if (!new_rest)
 		return (NULL);
-	new_rest[ft_strlen(new_rest)] = '\0';
+	new_rest[ft_strlen(rest_buf) - i] = '\0';
 	while (new_rest[j])
 		new_rest[j++] = rest_buf[++i];
 	free (rest_buf);
@@ -47,14 +47,12 @@ char	*ft_define_line(char *rest_buf)
 	char	*line;
 
 	i = 0;
-	if (!rest_buf)
-		return (ft_free(&rest_buf));
 	while (rest_buf[i] && rest_buf[i] != '\n')
 		i++;
 	line = (char *)malloc((i + 2) * sizeof(char));
 	if (!line)
-		return (ft_free(&line));
-	line[ft_strlen(line)] = '\0';
+		return (NULL);
+	line[i + 1] = '\0';
 	i = -1;
 	while (line[++i])
 		line[i] = rest_buf[i];
@@ -68,15 +66,23 @@ char	*ft_read(int fd, char *rest_buf)
 
 	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf)
-		return (ft_free(&buf));
+		return (NULL);
 	rv = 1;
-	while (rv > 0 && ft_strchr(rest_buf, '\n') != 0)
+	while (rv > 0 && !ft_strchr(rest_buf, '\n'))
 	{
 		rv = read(fd, buf, BUFFER_SIZE);
-		if (!rest_buf || rv < 0)
-			return (ft_free(&rest_buf));
-		buf[rv + 1] = '\0';
+		if (rv == -1)
+		{
+			free(buf);
+			return (NULL);
+		}
+		buf[rv] = '\0';
 		rest_buf = ft_strjoin(rest_buf, buf);
+		if (!rest_buf)
+		{
+			free(buf);
+			return (NULL);
+		}
 	}
 	free (buf);
 	return (rest_buf);
@@ -89,24 +95,32 @@ char	*get_next_line(int fd)
 
 	if (fd < 0)
 		return (NULL);
+	if (!rest_buf)
+	{
+		rest_buf = (char *)malloc(1 * sizeof(char));
+		if (!rest_buf)
+			return (NULL);
+		rest_buf[0] = '\0';
+	}
 	rest_buf = ft_read(fd, rest_buf);
+	if (!rest_buf)
+		return (ft_free(&rest_buf));
 	line = ft_define_line(rest_buf);
+	if (!line)
+		return (ft_free(&rest_buf));
 	rest_buf = ft_rest_read(rest_buf);
 	return (line);
 }
 
-/*int	main(void)
-{
-	int	fd;
+// int	main(void)
+// {
+// 	int		fd;
+// 	char	*a;
 
-	fd = open("",O_RDONLY);
-	if (fd == -1)
-	{
-		ft_putstr("Error \n");
-		return (0);
-	}
-	get_next_line(fd);
-	close(fd);
-	return (0);
-}*/
-
+// 	fd = open ("documento.txt", O_RDONLY);
+// 	a = get_next_line(fd);
+// 	printf("%s", a);
+// 	free (a);
+// 	close(fd);
+// 	return (0);
+// }
