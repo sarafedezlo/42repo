@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:22 by sarferna          #+#    #+#             */
-/*   Updated: 2023/08/14 18:43:05 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/15 09:34:25 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ char	*ft_rest_read(char *rest_buf)
 	if (!new_rest)
 		return (NULL);
 	new_rest[ft_strlen(rest_buf) - i] = '\0';
-	while (new_rest[j])
-		new_rest[j++] = rest_buf[++i];
+	i++;
+	while (rest_buf[i])
+		new_rest[j++] = rest_buf[i++];
+	new_rest[j] = '\0';
 	free (rest_buf);
 	return (new_rest);
 }
