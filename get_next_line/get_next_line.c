@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:22 by sarferna          #+#    #+#             */
-/*   Updated: 2023/08/15 09:34:25 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/15 18:43:37 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,14 @@ char	*ft_rest_read(char *rest_buf)
 	j = 0;
 	while (rest_buf[i] && rest_buf[i] != '\n')
 		i++;
+	if (rest_buf[i] == '\0')
+	{
+		free(rest_buf);
+		return (NULL);
+	}
 	new_rest = (char *)malloc((ft_strlen(rest_buf) - i + 1) * sizeof(char));
 	if (!new_rest)
 		return (NULL);
-	new_rest[ft_strlen(rest_buf) - i] = '\0';
 	i++;
 	while (rest_buf[i])
 		new_rest[j++] = rest_buf[i++];
@@ -54,10 +58,18 @@ char	*ft_define_line(char *rest_buf)
 	line = (char *)malloc((i + 2) * sizeof(char));
 	if (!line)
 		return (NULL);
-	line[i + 1] = '\0';
-	i = -1;
-	while (line[++i])
+	i = 0;
+	while (rest_buf[i] && rest_buf[i] != '\n')
+	{
 		line[i] = rest_buf[i];
+		i++;
+	}
+	if (rest_buf[i] == '\n')
+	{
+		line[i] = rest_buf[i];
+		i++;
+	}
+	line[i] = '\0';
 	return (line);
 }
 
@@ -74,19 +86,15 @@ char	*ft_read(int fd, char *rest_buf)
 	{
 		rv = read(fd, buf, BUFFER_SIZE);
 		if (rv == -1)
-		{
-			free(buf);
-			return (NULL);
-		}
+			return (ft_free(&buf));
 		buf[rv] = '\0';
 		rest_buf = ft_strjoin(rest_buf, buf);
 		if (!rest_buf)
-		{
-			free(buf);
-			return (NULL);
-		}
+			return (ft_free(&buf));
 	}
 	free (buf);
+	if ((rest_buf && ft_strlen(rest_buf) == 0) && rv == 0)
+		return (ft_free(&rest_buf));
 	return (rest_buf);
 }
 
@@ -95,7 +103,7 @@ char	*get_next_line(int fd)
 	static char	*rest_buf;
 	char		*line;
 
-	if (fd < 0)
+	if (fd < 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE < 0)
 		return (NULL);
 	if (!rest_buf)
 	{
@@ -108,8 +116,6 @@ char	*get_next_line(int fd)
 	if (!rest_buf)
 		return (ft_free(&rest_buf));
 	line = ft_define_line(rest_buf);
-	if (!line)
-		return (ft_free(&rest_buf));
 	rest_buf = ft_rest_read(rest_buf);
 	return (line);
 }
