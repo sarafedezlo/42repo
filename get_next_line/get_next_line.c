@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:22 by sarferna          #+#    #+#             */
-/*   Updated: 2023/08/15 18:43:37 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/21 14:15:11 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,15 @@ char	*ft_read(int fd, char *rest_buf)
 	while (rv > 0 && !ft_strchr(rest_buf, '\n'))
 	{
 		rv = read(fd, buf, BUFFER_SIZE);
-		if (rv == -1)
-			return (ft_free(&buf));
-		buf[rv] = '\0';
-		rest_buf = ft_strjoin(rest_buf, buf);
-		if (!rest_buf)
-			return (ft_free(&buf));
+		if (rv > 0)
+		{
+			buf[rv] = '\0';
+			rest_buf = ft_strjoin(rest_buf, buf);
+		}
 	}
 	free (buf);
+	if (rv == -1)
+		return (ft_free(&rest_buf));
 	if ((rest_buf && ft_strlen(rest_buf) == 0) && rv == 0)
 		return (ft_free(&rest_buf));
 	return (rest_buf);
@@ -103,7 +104,7 @@ char	*get_next_line(int fd)
 	static char	*rest_buf;
 	char		*line;
 
-	if (fd < 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE < 0)
+	if (fd < 0)
 		return (NULL);
 	if (!rest_buf)
 	{
