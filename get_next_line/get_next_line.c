@@ -6,13 +6,11 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:22 by sarferna          #+#    #+#             */
-/*   Updated: 2023/08/21 16:47:03 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/21 17:18:35 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
-#include <fcntl.h>
 
 char	*ft_free(char **buf)
 {
@@ -35,7 +33,7 @@ char	*ft_rest_read(char *rest_buf)
 		return (ft_free(&rest_buf));
 	new_rest = (char *)malloc((ft_strlen(rest_buf) - i + 1) * sizeof(char));
 	if (!new_rest)
-		return (NULL);
+		return (ft_free(&rest_buf));
 	i++;
 	while (rest_buf[i])
 		new_rest[j++] = rest_buf[i++];
@@ -80,7 +78,7 @@ char	*ft_read(int fd, char *rest_buf)
 
 	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf)
-		return (NULL);
+		return (ft_free(&rest_buf));
 	rv = 1;
 	while (rv > 0 && !ft_strchr(rest_buf, '\n'))
 	{

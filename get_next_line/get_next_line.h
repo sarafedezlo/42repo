@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:50 by sarferna          #+#    #+#             */
-/*   Updated: 2023/08/14 16:21:35 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/21 17:18:33 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
 
 char	*get_next_line(int fd);
 char	*ft_free(char **buf);
