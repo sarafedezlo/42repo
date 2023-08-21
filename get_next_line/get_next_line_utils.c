@@ -6,7 +6,7 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:37:27 by sarferna          #+#    #+#             */
-/*   Updated: 2023/08/15 18:43:39 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:46:46 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ char	*ft_strjoin(char *rest_buf, char *buf)
 
 	i = -1;
 	c = -1;
-	sr = (char *)malloc((ft_strlen(rest_buf) + ft_strlen(buf) + 1) \
-		* sizeof(char));
+	sr = (char *)malloc((ft_strlen(rest_buf) + ft_strlen(buf) + 1)
+			* sizeof(char));
 	if (!sr)
-		return (NULL);
+		return (ft_free(&rest_buf));
 	while (rest_buf[++i])
 		sr[i] = rest_buf[i];
 	while (buf[++c])
