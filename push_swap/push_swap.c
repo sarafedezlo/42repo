@@ -6,24 +6,31 @@
 /*   By: sarferna <sarferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:31:32 by sarferna          #+#    #+#             */
-/*   Updated: 2023/09/06 15:00:02 by sarferna         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:00:30 by sarferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <stdio.h>
-/*FUNCIONES DEL PUSH SWAP*/
-//Swap
-
-//Push
-
-//Rotate
-
-//Reverse rotate
 
 //INPUTS:
-//Revisar que no hayan repetidos
-//Revisar que sean numeros
+//Inputs en forma de argumentos:
+//	Revisar que sean numeros
+//	Revisar que no hayan repetidos
+//	Contar num de inputs
+//Inputs en forma de string:
+//	Split
+//	Revisar que sean numeros
+//	Revisar que no hayan repetidos
+//	Contar num de inputs
+
+//FUNCIONES DEL PUSH SWAP
+//Swap
+//Push
+//Rotate
+//Reverse rotate
+//especial para 4 inputs
+//especial para 5 inputs
 
 static int	aux_words(char const *s, char c)
 {
@@ -121,6 +128,7 @@ int	ft_atoi(const char *str)
 	return (result);
 }
 // Revision de errores post atoi para ver si es un resultado valido o no.
+//escribirlo por el canal 2.
 if (num == 0 && strcmp(str, "0") != 0)
 	return ("Error");
 
